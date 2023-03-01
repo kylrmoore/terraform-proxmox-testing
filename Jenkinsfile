@@ -4,7 +4,11 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				echo 'Building...'
+				sh 'echo "My first pipeline"'
+				sh '''
+					echo "By the way, I can do more stuff in here"
+					ls -lah
+				'''
 			}
 		}
 		stage('Test') {
