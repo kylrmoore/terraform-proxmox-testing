@@ -31,6 +31,10 @@ variable "ciuser" {
 	type = string
 }
 
+variable "disk_size" {
+	type = string
+}
+
 resource "proxmox_vm_qemu" "create_vm" {
 	name = var.vm_name
 	desc = var.vm_desc
@@ -48,7 +52,7 @@ resource "proxmox_vm_qemu" "create_vm" {
 	bootdisk = "scsi0"
 
 	disk {
-		size = "40G"
+		size = var.disk_size
 		type = "scsi"
 		storage = "local-lvm"
 	}
